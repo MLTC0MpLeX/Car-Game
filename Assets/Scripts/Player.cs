@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] float padding = 1;
+    [SerializeField] float padding = 1f;
     float xMin, xMax, yMin, yMax;
     // Start is called before the first frame update
     void Start()
@@ -25,12 +25,12 @@ public class Player : MonoBehaviour
         Camera gameCamera = Camera.main;
 
         //set the boundaries on the x-axis
-        xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + padding + 5;
-        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - padding - 5;
+        xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + padding ;
+        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - padding ;
 
         //set the boundaries on the y-axis
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + padding;
-        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - padding - 7;
+        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - padding - 5 ;
     }
 
     void Move()
