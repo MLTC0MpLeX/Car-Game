@@ -4,56 +4,46 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour
 {
-    [SerializeField] List<Transform> waypoints;
-    [SerializeField] WaveConfig waveConfig;
 
+    WaveConfig waveConfig;
+    List<Transform> waypoints;
     int waypointIndex = 0;
 
-    // Start is called before the first frame update
+    // Use this for initialization
     void Start()
     {
-        transform.position = waypoints[waypointIndex].transform.position;
         waypoints = waveConfig.GetWaypoints();
+        transform.position = waypoints[waypointIndex].transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        EnemyMove();
+        Move();
     }
-    
-    void EnemyMove()
-    {
-        if (waypointIndex <= waypoints.Count -1)
-        {
-            //save the current waypoint in targetPosition
-            //targetPosition: where we want to go
-            var targetPosition = waypoints[waypointIndex].transform.position;
-    
-            //to make sure z position is 0	
-            targetPosition.z = 0f;
-    
-            var movementThisFrame = waveConfig.GetEnemyMoveSpeed() * Time.deltaTime;
-            //move from the current position, to the target position, the maximum distance one can move
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
 
-            //if we reached the target waypoint
+    public void SetWaveConfig(WaveConfig waveConfig)
+    {
+        this.waveConfig = waveConfig;
+    }
+
+    private void Move()
+    {
+        if (waypointIndex <= waypoints.Count - 1)
+        {
+            var targetPosition = waypoints[waypointIndex].transform.position;
+            var movementThisFrame = waveConfig.GetEnemyMoveSpeed() * Time.deltaTime;
+            transform.position = Vector2.MoveTowards
+                (transform.position, targetPosition, movementThisFrame);
+
             if (transform.position == targetPosition)
             {
                 waypointIndex++;
             }
         }
-        //if enemy moved to all waypoints
         else
         {
             Destroy(gameObject);
         }
     }
-    
-    public void SetWaveConfig(WaveConfig waveConfigToSet)
-    {
-        waveConfig = waveConfigToSet;
-    }
-
-
 }

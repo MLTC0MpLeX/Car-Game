@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3029278394693135955}
   - component: {fileID: 7208580528451171034}
+  - component: {fileID: 4820190484300904358}
   m_Layer: 0
   m_Name: shipPink_manned
   m_TagString: Untagged
@@ -82,3 +83,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4820190484300904358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289608466922148150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de3941d01dd3146d49cf9a3576b8b464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+  waveConfig: {fileID: 0}
